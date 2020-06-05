@@ -1,0 +1,10 @@
+main_box:
+  type: Box
+  widgets: 
+  - label_test:
+      type: Label
+      args: ["I'm a label"]
+  - button_test:
+      type: Button
+      args: ["I'm a button"]
+      on_press: button_handler
