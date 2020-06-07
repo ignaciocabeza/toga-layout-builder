@@ -1,13 +1,36 @@
 import toga
+import yaml
 
 
 class Builder:
 
-    def __init__(self, styles=None, events=None):
-        self.styles = styles
-        self.events = events
+    def __init__(self, layout = None):
+        self._styles = []
+        self._events = []
 
-    def create_layout(self, layout, parent):
+    def load(self, layout_path):
+        layout_file = open(layout_path, 'r')
+        with layout_file as f:
+            self.layout = yaml.load(f.read())
+            return self.create_layout(self.layout)
+
+    @property
+    def styles(self):
+        return self._styles
+
+    @styles.setter
+    def styles(self, styles):
+        self._styles = styles
+
+    @property
+    def events(self):
+        return self._events
+
+    @events.setter
+    def events(self, events):
+        self._events = events
+
+    def create_layout(self, layout, parent=None):
         """ recursive and dinamically creates a toga layout
 
         params:
@@ -27,16 +50,24 @@ class Builder:
         children = layout[name].get('widgets', None)
 
         # get initialization params
-        optional = {key: value for (key, value) in layout[name].items() if key not in ['args', 'type', 'widgets', 'style']}
+        optional = {key: value for (key, value) in layout[name].items() if key not in ['args', 'type', 'widgets']}
 
         # sanitase optional parameters
         for key, value in optional.items():
             if 'on_' in key:
                 # params starting with _on are converted to a function
-                optional[key] = getattr(self.events, value)
-
-        if layout[name].get('style', None):
-            optional['style'] = getattr(self.styles, layout[name].get('style'))
+                for event_lib in self._events:
+                    if getattr(event_lib, value, None):
+                        # found event and exit
+                        optional[key] = getattr(event_lib, value)
+                        break
+            print (key)
+            if key == 'style':
+                # look for a style in style libs
+                for style_lib in self._styles:
+                    if getattr(style_lib, value, None):
+                        optional['style'] = getattr(style_lib, value)
+                        break
 
         # get positional params
         # TODO: Improve this if

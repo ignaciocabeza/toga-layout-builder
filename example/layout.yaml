@@ -1,6 +1,7 @@
 main_box:
   type: Box
-  widgets: 
+  style: main_box_style
+  widgets:
   - label_test:
       type: Label
       args: ["I'm a label"]

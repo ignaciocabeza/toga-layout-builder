@@ -12,6 +12,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/ignaciocabeza/toga-layout-builder",
     packages=setuptools.find_packages(),
+    install_requires=[
+        'pyyaml',
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
