@@ -1,11 +1,79 @@
 main_box:
-  type: Box
-  style: main_box_style
-  widgets:
-  - label_test:
-      type: Label
-      args: ["I'm a label"]
-  - button_test:
-      type: Button
-      args: ["I'm a button"]
-      on_press: button_handler
+    type: Box
+    style: full_width
+    widgets:
+        - option_test:
+            type: OptionContainer
+            on_select: handler_onselect
+            style: full_width
+            widgets: 
+                - box_1:
+                    type: Box
+                    label: "tst"
+                    style: full_width
+                    widgets:
+                        - scroll_container_example:
+                            type: ScrollContainer
+                            vertical: True
+                            horizontal: True
+                            style: full_row
+                            widgets:
+                                - box_scroll:
+                                    type: Box
+                                    style: full_column
+                                    widgets:
+                                        - button_example:
+                                            type: Button
+                                            style: generic_style
+                                            on_press: button_handler
+                                            args: ["I'm a Button"]
+                                        - label_example:
+                                            type: Label
+                                            args: ["I'm a label"]
+                                            style: generic_style
+                                        - multiline_input:
+                                            type: MultilineTextInput
+                                            style: generic_style
+                                        - number_input:
+                                            type: NumberInput
+                                            style: generic_style
+                                        - passwd:
+                                            type: PasswordInput
+                                        - progress:
+                                            type: ProgressBar
+                                        - selection:
+                                            type: Selection
+                                        - slider: 
+                                            type: Slider
+                                        - switch:
+                                            type: Switch
+                                            args: ["switch"]
+                                        - table:    
+                                            type: Table
+                                            headings: ["id"]
+                                        - text: 
+                                            type: TextInput
+                                        - tree:
+                                            type: Tree
+                                            headings: ["id"]
+                                        - webview:
+                                            type: WebView
+                                        - canvas_example:
+                                            type: Canvas
+                                            style: generic_style
+                                        - activity:
+                                            type: ActivityIndicator
+                                            style: generic_style
+                                        - image_example:
+                                            type: ImageView
+                                            style: generic_style
+                                        - detailed_list_example:
+                                            type: DetailedList
+                                            style: generic_style
+                - box_2:
+                    type: Box
+                    label: "other option"
+                    widgets:
+                        - label_option2:
+                            type: Label
+                            args: ['im a label in other option']
