@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/toga-layout-builder.svg)](https://badge.fury.io/py/toga-layout-builder)
+
 # Toga Layout Builder
 
 The aim of this project is to create user interfaces easily with a yaml document. 
