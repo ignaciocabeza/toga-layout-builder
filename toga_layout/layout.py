@@ -7,13 +7,15 @@ class Layout:
     def __init__(self, layout = None):
         self._styles = []
         self._events = []
+        self._widgets = None
+        self._layout = {}
 
     def load(self, layout_path):
         layout_file = open(layout_path, 'r')
         with layout_file as f:
-            self.layout = yaml.load(f.read())
-            self.widgets = self._create_layout(self.layout)
-            return self.widgets
+            self._layout = yaml.load(f.read())
+            self._widgets = self._create_layout(self._layout)
+            return self._widgets
 
     @property
     def styles(self):
