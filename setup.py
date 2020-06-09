@@ -1,8 +1,9 @@
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="toga-layout-builder", 
     version="0.1.0",
     author="Ignacio Cabeza",
@@ -11,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ignaciocabeza/toga-layout-builder",
-    packages=setuptools.find_packages(exclude=("tests",)),
+    packages=find_packages(exclude=("tests",)),
     install_requires=[
         'toga',
         'pyyaml',

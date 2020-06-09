@@ -41,7 +41,6 @@ class Layout:
 
         # structure checks
         if len(layout.keys()) != 1:
-            breakpoint()
             # node of the tree
             raise Exception(f'Bad Format near: {layout}')
 
