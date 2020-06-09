@@ -10,7 +10,7 @@ main_box:
                 - box_1:
                     type: Box
                     label: "tst"
-                    style: full_width
+                    style: full_column
                     widgets:
                         - scroll_container_example:
                             type: ScrollContainer

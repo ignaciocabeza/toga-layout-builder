@@ -1,6 +1,6 @@
 
-#with open("README.md", "r") as fh:
-#    long_description = fh.read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setuptools.setup(
     name="toga-layout-builder", 
@@ -8,11 +8,12 @@ setuptools.setup(
     author="Ignacio Cabeza",
     author_email="ignaciocabeza@gmail.com",
     description="Toga Layout",
-    long_description="long_description",
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ignaciocabeza/toga-layout-builder",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=("tests",)),
     install_requires=[
+        'toga',
         'pyyaml',
     ],
     classifiers=[

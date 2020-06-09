@@ -1,6 +1,6 @@
 import yaml
 import toga
-from toga_layout import Builder
+from toga_layout import Layout
 from toga.style.pack import Pack, COLUMN, ROW
 
 import styles
@@ -12,10 +12,10 @@ def button_handler(widget):
 
 
 def build(app):
-    builder = Builder()
-    builder.styles = [styles]
-    builder.events = [events]
-    return builder.load('./example/layout.yaml')
+    layout = Layout()
+    layout.styles = [styles]
+    layout.events = [events]
+    return layout.load('./example/layout.yaml')
 
 def main():
     return toga.App('Calculator', 'org.beeware.helloworld', startup=build)

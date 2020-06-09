@@ -2,7 +2,7 @@ import toga
 import yaml
 
 
-class Builder:
+class Layout:
 
     def __init__(self, layout = None):
         self._styles = []
