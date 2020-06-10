@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="toga-layout-builder", 
-    version="0.2.0",
+    version="0.3.0",
     author="Ignacio Cabeza",
     author_email="ignaciocabeza@gmail.com",
     description="Toga Layout",
