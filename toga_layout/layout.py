@@ -1,4 +1,5 @@
 import toga
+from toga.style.pack import Pack
 import yaml
 
 
@@ -111,9 +112,32 @@ class Layout:
 
             # look for a style in style libs
             if key == 'style':
-                for style_lib in self._styles:
-                    if getattr(style_lib, value, None):
-                        optional['style'] = getattr(style_lib, value)
-                        break
-        
+                result_style = None
+
+                # check if widget has one style or multiple
+                # and build an array for applying styles later
+                apply_styles = []
+                if isinstance(value, str):
+                    # only one style
+                    apply_styles.append(optional['style'])
+                elif isinstance(value, list):
+                    # multiple styles
+                    for style in optional['style']:
+                        apply_styles.append(style)
+                
+                # TODO: Improve for>for
+                for style_value in apply_styles:
+                    for style_lib in self._styles:
+                        if getattr(style_lib, style_value, None):
+                            if result_style != None:
+                                # mix styles, apply new styles to existing ones
+                                old_styles = {k: v for k, v in result_style.items()}
+                                new_styles = {k: v for k, v in getattr(style_lib, style_value).items()}
+                                result_style = Pack(**old_styles,**new_styles)
+                            else:
+                                result_style = getattr(style_lib, style_value)
+                            break
+                
+                optional['style'] = result_style
+
         return optional

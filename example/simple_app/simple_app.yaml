@@ -1,0 +1,25 @@
+main_box:
+    type: Box   
+    style: ["padding_10","column_dir"]
+    widgets:
+        - box_row_1:
+            type: Box
+            style: padding_bottom_5
+            widgets:
+                - label_info:
+                    type: Label
+                    style: ['padding_top_5', 'flex1']
+                    args: ['Insert your name here:']
+                - text_name:
+                    type: TextInput
+                    style: 'flex1'
+        - btn_greetings:
+            type: Button
+            style: "padding_bottom_5"
+            on_press: handle_greetings
+            args: ["Greetings"]
+        - response_greetings:
+            type: Label
+            style: flex1
+            args: [""]
+    
